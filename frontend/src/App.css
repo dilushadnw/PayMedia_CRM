@@ -1,0 +1,34 @@
+.App {
+  min-height: 100vh;
+  background-color: #f8f9fa;
+}
+
+.App-header {
+  background-color: #282c34;
+  padding: 20px;
+  color: white;
+  text-align: center;
+}
+
+h1 {
+  color: #2c3e50;
+  font-weight: bold;
+}
+
+.card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.table-responsive {
+  overflow-x: auto;
+}
+
+.btn {
+  transition: all 0.3s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}

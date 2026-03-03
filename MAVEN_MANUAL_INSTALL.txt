@@ -1,0 +1,82 @@
+==============================================
+Maven Manual Installation - SIMPLE METHOD
+==============================================
+
+STEP 1: Download Maven (1 minute)
+----------------------------------
+1. Open this link in browser: https://maven.apache.org/download.cgi
+
+2. Click on "apache-maven-3.9.9-bin.zip" under "Binary zip archive"
+
+3. Save the file to your Downloads folder
+
+
+STEP 2: Extract Maven (30 seconds)
+-----------------------------------
+1. Go to your Downloads folder
+2. Right-click on "apache-maven-3.9.9-bin.zip"
+3. Select "Extract All..."
+4. Extract to: C:\maven
+   (If C:\ gives permission error, use: C:\Users\YOUR_USERNAME\maven)
+
+After extraction you should have: C:\maven\apache-maven-3.9.9
+
+
+STEP 3: Add to PATH (2 minutes)
+--------------------------------
+1. Press Windows Key + R
+2. Type: sysdm.cpl
+3. Press Enter
+
+4. Click "Advanced" tab
+5. Click "Environment Variables..." button
+
+6. Under "System variables" section:
+   - Find "Path" variable
+   - Click "Edit..."
+   - Click "New"
+   - Type: C:\maven\apache-maven-3.9.9\bin
+   - Click "OK"
+   - Click "OK" on all windows
+
+STEP 4: Restart Terminal (IMPORTANT!)
+--------------------------------------
+Close ALL CMD/PowerShell windows and open a NEW one
+
+
+STEP 5: Verify (10 seconds)
+----------------------------
+Open new CMD and type:
+   mvn -version
+
+Should show: Apache Maven 3.9.9
+
+
+DONE! Now run the application:
+-------------------------------
+
+Backend (CMD):
+   cd "c:\dnw\incubationPayMedia\crm test 2\backend"
+   mvn spring-boot:run
+
+Frontend (New CMD):
+   cd "c:\dnw\incubationPayMedia\crm test 2\frontend"
+   npm start
+
+
+==============================================
+TROUBLESHOOTING:
+==============================================
+
+Problem: "mvn is not recognized"
+Solution: 
+   - Make sure you added to PATH correctly
+   - Restart CMD completely (close and reopen)
+   - Check the path exists: C:\maven\apache-maven-3.9.9\bin
+
+Problem: Can't extract to C:\maven
+Solution:
+   - Extract to: C:\Users\YOUR_USERNAME\maven
+   - Then add to PATH: C:\Users\YOUR_USERNAME\maven\apache-maven-3.9.9\bin
+
+==============================================

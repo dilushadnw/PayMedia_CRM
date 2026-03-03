@@ -1,0 +1,110 @@
+================================
+PayMedia CRM - Manual Database Setup Instructions
+================================
+
+If the automated script doesn't work, follow these manual steps:
+
+METHOD 1: Using MySQL Command Line Client
+------------------------------------------
+
+Step 1: Open MySQL Command Line Client
+   - Search for "MySQL Command Line Client" in Windows Start Menu
+   - OR open CMD and type: mysql -u root -p
+
+Step 2: Enter your MySQL root password
+
+Step 3: Run these commands one by one:
+
+   CREATE DATABASE IF NOT EXISTS paymedia_crm;
+   USE paymedia_crm;
+   SOURCE c:/dnw/incubationPayMedia/crm test 2/database/organisation_schema.sql;
+   
+   Note: Use forward slashes (/) in the path, not backslashes (\)
+
+Step 4: Verify the setup:
+
+   SHOW TABLES;
+   SELECT * FROM organisation;
+
+
+METHOD 2: Using MySQL Workbench
+--------------------------------
+
+Step 1: Open MySQL Workbench
+
+Step 2: Connect to your MySQL server
+
+Step 3: Create new database:
+   - Click "Create New Schema" button
+   - Name it: paymedia_crm
+   - Click "Apply"
+
+Step 4: Run SQL script:
+   - File → Open SQL Script
+   - Browse to: c:\dnw\incubationPayMedia\crm test 2\database\organisation_schema.sql
+   - Click "Execute" (lightning bolt icon)
+
+Step 5: Verify:
+   - Refresh schemas
+   - Expand paymedia_crm → Tables
+   - You should see "organisation" table
+
+
+METHOD 3: Using XAMPP (if you have it)
+---------------------------------------
+
+Step 1: Start XAMPP Control Panel
+
+Step 2: Start MySQL service
+
+Step 3: Click "Shell" button in XAMPP
+
+Step 4: Run these commands:
+
+   mysql -u root
+   CREATE DATABASE IF NOT EXISTS paymedia_crm;
+   USE paymedia_crm;
+   SOURCE c:/dnw/incubationPayMedia/crm\ test\ 2/database/organisation_schema.sql;
+
+
+TROUBLESHOOTING:
+----------------
+
+Problem: "mysql is not recognized as a command"
+Solution: Add MySQL to your PATH or use full path like:
+   "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root -p
+
+Problem: "Access denied for user 'root'"
+Solution: Check your MySQL password or reset it
+
+Problem: "Can't connect to MySQL server"
+Solution: Make sure MySQL service is running:
+   - Windows Services → MySQL → Start
+
+Problem: "Database exists" error
+Solution: It's OK! The database already exists. Just run:
+   USE paymedia_crm;
+   SOURCE c:/dnw/incubationPayMedia/crm test 2/database/organisation_schema.sql;
+
+
+NEXT STEPS AFTER DATABASE SETUP:
+---------------------------------
+
+1. Update backend configuration:
+   Edit: backend\src\main\resources\application.properties
+   
+   Change these lines if needed:
+   spring.datasource.username=root
+   spring.datasource.password=YOUR_MYSQL_PASSWORD
+
+2. Start the backend:
+   cd "c:\dnw\incubationPayMedia\crm test 2\backend"
+   mvn spring-boot:run
+
+3. Start the frontend:
+   cd "c:\dnw\incubationPayMedia\crm test 2\frontend"
+   npm install
+   npm start
+
+
+For more help, see README.md or QUICKSTART.md

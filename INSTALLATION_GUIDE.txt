@@ -1,0 +1,209 @@
+# ========================================
+# PayMedia CRM - Complete Installation Guide for Windows
+# ========================================
+# ඔයාට Install කරන්න ඕනේ මොනවද කියලා සහ කොහොමද කරන්නේ කියලා
+# ========================================
+
+## 📋 Install කරන්න ඕනේ මොනවද?
+
+1. ✅ Java JDK 11+ (Backend එකට)
+2. ✅ Maven 3.6+ (Java project build කරන්න)
+3. ✅ Node.js 14+ (Frontend එකට)
+
+---
+
+## 1️⃣ Java JDK Installation
+
+### Download:
+🔗 https://adoptium.net/temurin/releases/
+
+### Steps:
+1. ඉහත link එක open කරන්න
+2. Version: **11 (LTS)** හෝ **17 (LTS)** choose කරන්න
+3. Operating System: **Windows**
+4. Architecture: **x64**
+5. Package Type: **JDK**
+6. ".msi" file එක download කරන්න (Example: OpenJDK11U-jdk_x64_windows_hotspot_11.0.XX.msi)
+
+### Install:
+1. Download කරපු .msi file එක double-click කරන්න
+2. "Next" click කරන්න (default settings OK)
+3. "Add to PATH" option එක tick කරන්න (Important!)
+4. Install complete වෙනකම් wait කරන්න
+
+### Verify:
+```cmd
+java -version
+```
+මේක Java version එක පෙන්වන්න ඕනේ (Example: openjdk version "11.0.XX")
+
+---
+
+## 2️⃣ Apache Maven Installation
+
+### Download:
+🔗 https://maven.apache.org/download.cgi
+
+### Steps:
+1. ඉහත link එක open කරන්න
+2. "Files" section එකේ:
+   - **apache-maven-3.9.X-bin.zip** download කරන්න (Binary zip archive)
+   - Example: apache-maven-3.9.5-bin.zip
+
+### Install:
+1. Download කරපු ZIP file එක extract කරන්න
+   - Recommended location: **C:\Program Files\Apache\maven**
+   - හෝ පහසු තැනක: **C:\maven**
+
+2. Environment Variables add කරන්න:
+
+   **Step A: MAVEN_HOME Variable එක add කරන්න**
+   - Windows Search එකේ type කරන්න: "Environment Variables"
+   - "Edit the system environment variables" click කරන්න
+   - "Environment Variables..." button එක click කරන්න
+   - "System Variables" section එකේ "New..." click කරන්න
+   - Variable name: **MAVEN_HOME**
+   - Variable value: **C:\Program Files\Apache\maven** (හෝ ඔයා extract කරපු folder path එක)
+   - "OK" click කරන්න
+
+   **Step B: PATH එකට Maven bin folder එක add කරන්න**
+   - "System Variables" section එකේ "Path" select කරලා "Edit..." click කරන්න
+   - "New" click කරන්න
+   - Add කරන්න: **%MAVEN_HOME%\bin**
+   - "OK" click කරන්න සියල්ල close කරන්න
+
+3. **IMPORTANT:** PowerShell/CMD close කරලා නැවත open කරන්න
+
+### Verify:
+```cmd
+mvn -version
+```
+මේක Maven version එක පෙන්වන්න ඕනේ (Apache Maven 3.9.X)
+
+---
+
+## 3️⃣ Node.js Installation (with npm)
+
+### Download:
+🔗 https://nodejs.org/
+
+### Steps:
+1. ඉහත link එක open කරන්න
+2. **LTS Version** එක download කරන්න (Example: 20.11.X LTS)
+   - Green color "LTS" button එක click කරන්න
+   - ".msi" installer එක download වෙයි
+
+### Install:
+1. Download කරපු .msi file එක double-click කරන්න
+2. "Next" click කරන්න
+3. License එකට "I accept" කරන්න
+4. Default installation path එක OK
+5. **"Automatically install necessary tools"** checkbox එක tick කරන්න
+6. Install complete වෙනකම් wait කරන්න
+7. Restart කරන්න අහන්නම් "Yes" කරන්න (හෝ පස්සේ manually restart කරන්න)
+
+### Verify:
+```cmd
+node -version
+npm -version
+```
+දෙකම version numbers පෙන්වන්න ඕනේ
+
+---
+
+## ✅ Installation Complete!
+
+### Final Verification:
+
+CMD හෝ PowerShell එකක් open කරලා මේවා run කරන්න:
+
+```cmd
+java -version
+mvn -version
+node -version
+npm -version
+```
+
+සියල්ලම version numbers පෙන්වන්නම් **READY TO GO!** 🎉
+
+---
+
+## 🚀 Next: Run the Application
+
+### Backend:
+```cmd
+cd "c:\dnw\incubationPayMedia\crm test 2\backend"
+start_backend.bat
+```
+හෝ
+```cmd
+mvn spring-boot:run
+```
+
+### Frontend (New Terminal):
+```cmd
+cd "c:\dnw\incubationPayMedia\crm test 2\frontend"
+start_frontend.bat
+```
+හෝ
+```cmd
+npm install
+npm start
+```
+
+---
+
+## ⚠️ Common Problems
+
+### Problem: "java is not recognized"
+**Solution:** 
+- Java install කරද්දී "Add to PATH" option එක tick කරලා නැද්ද check කරන්න
+- හෝ manually Java PATH එකට add කරන්න:
+  - Environment Variables → System Path → New
+  - Add: `C:\Program Files\Eclipse Adoptium\jdk-11.X.X-hotspot\bin`
+
+### Problem: "mvn is not recognized"
+**Solution:** 
+- MAVEN_HOME environment variable එක හදලා නැද්ද check කරන්න
+- PATH එකට %MAVEN_HOME%\bin add කරලා නැද්ද check කරන්න
+- CMD/PowerShell restart කරන්න
+
+### Problem: "node is not recognized"
+**Solution:**
+- Node.js installer එක restart කරලා re-install කරන්න
+- "Add to PATH" option එක automatically හරි වෙන්න ඕනේ
+
+### Problem: Port 8080 already in use
+**Solution:**
+```cmd
+# යම් program එකක් port 8080 use කරනවා නම්:
+netstat -ano | findstr :8080
+# Process එක kill කරන්න:
+taskkill /PID [PID_NUMBER] /F
+```
+
+---
+
+## 📞 වැඩිමනත් උදව්
+
+ඔයාට තවත් problems තියෙනවා නම්:
+
+1. Java installation issues: https://adoptium.net/installation/
+2. Maven installation issues: https://maven.apache.org/install.html
+3. Node.js installation issues: https://nodejs.org/en/download/package-manager/
+
+---
+
+## 🎯 Quick Summary
+
+සරලව කිව්වොත්:
+
+1. **Java JDK** - Backend run කරන්න
+2. **Maven** - Backend build කරන්න
+3. **Node.js + npm** - Frontend run කරන්න
+
+මේ තුනම install කරලා verify කරලා ඉවර වුණාම application එක run කරන්න ready! 🚀
+
+---
+
+**Good Luck! ඔයාට පුළුවන්! 💪**
