@@ -1,3 +1,9 @@
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+# PayMedia_CRM
+=======
+>>>>>>> ae3bcba
 # PayMedia CRM - Organisation Management System
 
 **Enterprise CRM & Project Lifecycle System**  
@@ -290,3 +296,7 @@ Internal Use - PayMedia Solutions Ltd
 ---
 
 **Built with ❤️ using Spring Boot & React**
+<<<<<<< HEAD
+=======
+>>>>>>> e419960 (First Commit simple backend ,frontend)
+>>>>>>> ae3bcba
